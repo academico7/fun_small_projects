@@ -1,1 +1,0 @@
-/usr/bin/c++  -pthread -O3 -DNDEBUG   CMakeFiles/unit_tests.dir/task_runner_test.cpp.o  -o unit_tests  -Wl,-rpath,/mnt/c/repo/fun_small_projects/task_runner/build/release/src ../src/libtask_runner_lib.so ../lib/libgtest_main.a ../lib/libgtest.a -lpthread 
