@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(task_runner)
+project(task_runner_example)
 set(CMAKE_CXX_FLAGS -pthread)
 
 enable_testing()

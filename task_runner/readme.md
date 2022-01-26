@@ -12,7 +12,7 @@ Run CMake to setup the Makefile:
 
 Build the test executables
 
->make all -j
+>cmake --build .
 
 Run command line example of task runner
 
