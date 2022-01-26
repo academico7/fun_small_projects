@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -pthread -O3 -DNDEBUG  -shared -Wl,-soname,libtask_runner_lib.so -o libtask_runner_lib.so CMakeFiles/task_runner_lib.dir/task_runner.cpp.o 

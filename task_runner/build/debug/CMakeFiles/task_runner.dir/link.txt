@@ -1,0 +1,1 @@
+/usr/bin/c++  -pthread -g   CMakeFiles/task_runner.dir/cmdExample.cpp.o  -o task_runner  -Wl,-rpath,/mnt/c/repo/fun_small_projects/task_runner/build/debug/src: src/libtask_runner_lib.so 
