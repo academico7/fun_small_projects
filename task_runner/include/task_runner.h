@@ -35,13 +35,11 @@ class TaskRunner
     std::mutex _m;
     std::atomic<t_state> task_state{tNotStarted};
 
+void task();
+
 void completed();
 
 void wait();
-
-bool is_paused() const { return task_state == tPaused;};
-
-bool is_stopped() const { return task_state == tStopped;};
 
 public:
 
@@ -50,8 +48,6 @@ TaskRunner(const TaskRunner& t) {};
 TaskRunner() {};
 
 std::string state() const { return state_options[task_state]; };
-
-void task();
 
 void start_task();
 

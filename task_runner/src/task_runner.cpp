@@ -19,7 +19,7 @@ void TaskRunner::task()   {
     auto previous_time = std::chrono::steady_clock::now();
     auto start_time = std::chrono::steady_clock::now();
 
-    while ( !TaskRunner::is_stopped() )    {
+    while ( task_state != tStopped )    {
 
         TaskRunner::wait();
 
@@ -49,7 +49,7 @@ void TaskRunner::completed()    {
 }
 
 void TaskRunner::wait() {
-    while(is_paused())  {
+    while( task_state == tPaused )  {
         std::unique_lock<std::mutex> lock(_m);
         cv.wait(lock);
     }

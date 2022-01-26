@@ -14,12 +14,23 @@
 #include <sstream>
 /*
 Missing:
-Unit tests : requirements
-Take care of the cmake and zip file
 Have another task type
-quit not working when tasks are paused
+Missing comments
+
 
 */
+
+void print_help()   {
+    std::cout << "Command line example help:" << std::endl;
+    std::cout << "Start  - starts a task and prints its ID " << std::endl;
+    std::cout << "Pause  - pauses a task with a given ID" << std::endl;
+    std::cout << "Resume - resumes a task with a given ID" << std::endl;
+    std::cout << "Stop   - Stops a task with a given ID" << std::endl;
+    std::cout << "Status - prints the id, the status (paused, running, stopped, completed)" << std::endl;
+    std::cout << "Status <task_id> - As above, but for a single task" << std::endl;
+    std::cout << "Quit - gracefully shut down" << std::endl;
+}
+
 
 // TODO should be on task_runner.h
 enum options{
@@ -48,8 +59,25 @@ bool is_number( const std::string inp)   {
 }
 
 
-int main()
+int main(int argc, char * argv[])
 {
+    // Simple command line parser, if it grows bigger I suggest using an external library ( e.g. boost::program_options )
+    if ( argc > 2 ) {
+        std::cout << "The only supported argument is --help" << std::endl;
+        return 0;
+    }
+    else if ( argc == 2 )   {
+        if ( std::string(argv[1]) == "--help" ) {
+            print_help();
+            return 0;
+        }
+        else    {
+            std::cout << "The only supported argument is --help" << std::endl;
+            return 0;
+        }
+    }
+
+
     std::unordered_map<int, std::unique_ptr<TaskRunner> > task_pool;
     signed int task_id_generator = 1;
 

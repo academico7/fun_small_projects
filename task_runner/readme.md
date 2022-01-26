@@ -14,7 +14,7 @@ Build the test executables
 
 >make all -j
 
-Run task runner command line example
+Run command line example of task runner
 
 >./task_runner_example
 
@@ -29,25 +29,41 @@ or
 #### Instruction Description
 The command line example can receive the following instructions as inputs:
 
-Starts a task and prints its ID
+Prints help messages and instructions
+>./task_runner_example --help
+
+Starts and waits for instructions
+
+>./task_runner_example
+
+Once the program is running, it should read instructions from the standard input. These instructions should have the following format:
+
+>- Starts a task and prints its ID
+
 >start
 
-Pause the task with the given id and print a confirmation message
+>- Pause the task with the given id and print a confirmation message
+
 >pause <task_id>
 
-Resume task with the given id (if paused) and print a confirmation message
+>- Resume task with the given id (if paused) and print a confirmation message
+
 >resume <task_id>
 
-Stop the task with the given id (if not stopped) and print a confirmation
+>- Stop the task with the given id (if not stopped) and print a confirmation
+
 >stop <task_id>
 
-Prints the id, the status (paused, running, stopped, completed)
+>- Prints the id, the status (paused, running, stopped, completed)
+
 >status 
 
-As above, but for a single task
+>- As above, but for a single task
+
 >status <task_id>
 
-Gracefully shut down
+>- Gracefully shut down
+
 >quit
 
  
