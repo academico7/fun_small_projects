@@ -11,7 +11,7 @@
 
 
 
-// have an enum with different types of threads, 
+// TODO have an enum with different types of threads, 
 //count all prime number until X
 //
 

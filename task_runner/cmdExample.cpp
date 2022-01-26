@@ -31,8 +31,6 @@ void print_help()   {
     std::cout << "Quit - gracefully shut down" << std::endl;
 }
 
-
-// TODO should be on task_runner.h
 enum options{
     eStart,
     eStop,

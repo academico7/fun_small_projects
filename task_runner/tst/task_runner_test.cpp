@@ -1,20 +1,6 @@
 #include <gtest/gtest.h>
 #include "task_runner.h"
 
-//https://github.com/kaizouman/gtest-cmake-example
-
-/*
-test scenarious
-calling pause twice
-calling stop twice
-
-example
-https://github.com/bmorcos/gtest-example
-
-https://github.com/allen-hunter/Google-Unit-Test-Example
-
-https://www.youtube.com/watch?v=16FI1-d2P4E
-*/
 
 class TaskRunnerTest : public ::testing::Test   {
 protected:
