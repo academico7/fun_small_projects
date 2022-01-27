@@ -1,11 +1,5 @@
 #include "task_runner.h"
 
-
-
-// TODO have an enum with different types of threads, 
-//count all prime number until X
-//
-
 void TaskRunner::task()   {
     auto previous_time = std::chrono::steady_clock::now();
     auto start_time = std::chrono::steady_clock::now();
