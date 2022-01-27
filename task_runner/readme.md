@@ -1,10 +1,19 @@
 #### Task Runner
 Task Runer is a simple C++ library that allows the user to manage an arbitrary number of asynchronous tasks.
 
-### How to build, run the test example and run the library unit tests
-From root/task_runner/ , create your build directory
+#### Dependencies
+git
 
->mkdir _build && cd _build
+Cmake 3.16
+
+C++ compiler GNU 9.3 c++17
+
+Posix platform
+
+### How to build, run the test example and run the library unit tests
+From task_runner/ , create your build directory
+
+>cd task_runner && mkdir _build && cd _build
 
 Run CMake to setup the Makefile:
 

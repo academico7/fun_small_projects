@@ -1,12 +1,3 @@
-#include <iostream>
-#include <thread>
-#include <mutex>
-#include <condition_variable>
-#include <memory>
-#include <numeric>
-#include <array>
-#include <atomic>
-#include <chrono>
 #include "task_runner.h"
 
 
@@ -68,6 +59,7 @@ void TaskRunner::start_task()   {
 
 
 void TaskRunner::stop_task()   {
+    // Ensure we actually resume task before we stop, to not be so abrupt
     if ( task_state == tPaused )    {
         TaskRunner::resume_task();
     }

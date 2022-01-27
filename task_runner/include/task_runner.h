@@ -9,7 +9,6 @@
 #include <atomic>
 #include <chrono>
 #include <unordered_map>
-
 //todo add namespace
 
 enum t_state{
@@ -35,10 +34,12 @@ class TaskRunner
     std::mutex _m;
     std::atomic<t_state> task_state{tNotStarted};
 
+// Very simple task that prints a number every 3 seconds
 void task();
 
 void completed();
 
+// called on every tasks's scan
 void wait();
 
 public:
