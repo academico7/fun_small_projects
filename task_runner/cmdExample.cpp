@@ -1,23 +1,15 @@
 #include <iostream>
-#include <thread>
-#include <mutex>
-#include <condition_variable>
 #include <memory>
-#include <numeric>
-#include <array>
-#include <atomic>
-#include <chrono>
-#include "task_runner.h"
 #include <string>
 #include <unordered_map>
 #include <cctype>
 #include <sstream>
+#include "task_runner.h"
 /*
-Missing:
+TODO:
 Have another task type
-Missing comments
 Githook pre commit
-
+add compiler optimization
 
 */
 
