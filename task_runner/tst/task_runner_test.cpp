@@ -1,6 +1,10 @@
 #include <gtest/gtest.h>
 #include "task_runner.h"
 
+/*
+TODO: the test is based on an internal class state, 
+could be relevant to add some verification that the task is doing its job
+*/
 
 class TaskRunnerTest : public ::testing::Test   {
 protected:
@@ -87,19 +91,3 @@ TEST_F(TaskRunnerTest, TaskResumedTwice) {
     task.resume_task();
     EXPECT_TRUE (task.state() == "Running");
 }
-
-
-
-
-/*
-Test all transitions
-call double command ( pause resume stop )
-
-EXPECT_CALL().Times.WillOnce.WillOnce ( or WillRepeated)
-
-have a mocking component
-ApplicationManager : public Mock<ApplicationManger>
-
-MOCK_METHOD0()
-
-*/
