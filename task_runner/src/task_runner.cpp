@@ -13,12 +13,14 @@ void TaskRunner::task()   {
         std::iota(a.begin(), a.end(), c++);
         for (auto &ele : a )   {
             auto current_time = std::chrono::steady_clock::now();
+            // Prints a number every 3 seconds
             if (std::chrono::duration_cast<std::chrono::seconds>(current_time - previous_time).count() >= 3)   {
                 previous_time = current_time;
                 std::cout << ele << std::endl;
             }
         }
 
+        // Completes after 10 seconds
         if ( std::chrono::duration_cast<std::chrono::seconds>(previous_time - start_time).count() >= 10 )    {
             TaskRunner::completed();
             break;
@@ -30,7 +32,6 @@ void TaskRunner::task()   {
 void TaskRunner::completed()    {
     task_state = tCompleted;
     std::cout << "Task Completed" << std::endl;
-    // should this be joined?
 }
 
 void TaskRunner::wait() {
@@ -39,7 +40,6 @@ void TaskRunner::wait() {
         cv.wait(lock);
     }
 }
-
 
 void TaskRunner::start_task()   {
     if ( task_state == tNotStarted )   {
@@ -50,7 +50,6 @@ void TaskRunner::start_task()   {
         std::cout << "Cannot start a task that has already been started" << std::endl;
     }
 }
-
 
 void TaskRunner::stop_task()   {
     // Ensure we actually resume task before we stop, to not be so abrupt

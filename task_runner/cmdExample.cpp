@@ -9,8 +9,7 @@
 TODO:
 Have another task type
 Githook pre commit
-add compiler optimization
-
+Configure cmake to git clone gtests repo to remove the size of the repo
 */
 
 void print_help()   {

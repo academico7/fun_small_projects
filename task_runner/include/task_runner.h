@@ -9,7 +9,6 @@
 #include <atomic>
 #include <chrono>
 #include <unordered_map>
-//todo add namespace
 
 enum t_state{
     tRunning,
@@ -29,6 +28,7 @@ std::unordered_map< enum t_state, std::string> state_options{
 
 class TaskRunner
 {
+private:
     std::thread t;
     std::condition_variable cv;
     std::mutex _m;
@@ -37,16 +37,12 @@ class TaskRunner
 // Very simple task that prints a number every 3 seconds
 void task();
 
-void completed();
-
 // called on every tasks's scan
 void wait();
 
+void completed();
+
 public:
-
-TaskRunner(const TaskRunner& t) {};
-
-TaskRunner() {};
 
 std::string state() const { return state_options[task_state]; };
 
