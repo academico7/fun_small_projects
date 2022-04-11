@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/advent_challenge.dir/src/advent_1.cpp.o  -o advent_challenge 

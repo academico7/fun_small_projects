@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/repo/fun/advent_challenge/src/advent_1.cpp
+iostream
+-
+fstream
+-
+errno.h
+-
+string.h
+-
+vector
+-
+numeric
+-
+

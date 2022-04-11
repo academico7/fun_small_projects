@@ -1,0 +1,3 @@
+/mnt/c/repo/fun/advent_challenge/build/debug/CMakeFiles/edit_cache.dir
+/mnt/c/repo/fun/advent_challenge/build/debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/repo/fun/advent_challenge/build/debug/CMakeFiles/advent_challenge.dir

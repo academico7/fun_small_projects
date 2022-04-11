@@ -1,0 +1,184 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Cmake",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "mkdir -p build/debug",
+                    "&& cd ./build/debug",
+                    "&& cmake -DCMAKE_BUILD_TYPE=Debug ../..",
+                    "\""
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Make all",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "cd ./build/debug",
+                    "&& make all -j",
+                    "\""
+                ]
+            },
+            "linux": {
+                "command": [
+                    "cd ./build/debug",
+                    "&& make all -j"
+                ]
+            },
+            "dependsOn": [
+                "Cmake"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Run tests",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "cd ./build/debug",
+                    "&& make test -j",
+                    "\""
+                ]
+            },
+            "linux": {
+                "command": [
+                    "cd ./build/debug",
+                    "&& make test -j"
+                ]
+            },
+            "dependsOn": [
+                "Make all"
+            ]
+        },
+        {
+            "label": "Static analysis",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "cd ${fileDirname}",
+                    "&& bash -c \"",
+                    "if [[ ${fileExtname} =~ .(c|cpp|h|cc)$ ]]; then",
+                    "  clang-format -i ${fileBasename};",
+                    "elif [[ ${fileBasename} =~ (CMakeLists.txt|.cmake) ]]; then",
+                    "  cmake-format -i ${fileBasename};",
+                    "fi",
+                    "\""
+                ]
+            },
+            "linux": {
+                "command": [
+                    "if [[ ${file} =~ .(c|cpp|h|cc)$ ]]; then;",
+                    "  clang-format -i ${file};",
+                    "elif [[ ${file} =~ (CMakeLists.txt|.cmake) ]]; then;",
+                    "  cmake-format -i ${file};",
+                    "fi"
+                ]
+            }
+        },
+        {
+            "label": "Dynamic analysis",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "mkdir -p build/debug++",
+                    "&& cd ./build/debug++",
+                    "&& cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_DIAGNOSTIC_TOOLS=ON ../..",
+                    "&& make all -j > output.log 2>&1",
+                    "\""
+                ]
+            },
+            "linux": {
+                "command": [
+                    "mkdir -p build/debug++",
+                    "&& cd ./build/debug++",
+                    "&& cmake -DCMAKE_BUILD_TYPE=Debug -DENABLE_DIAGNOSTIC_TOOLS=ON ../..",
+                    "&& make all -j > output.log 2>&1 "
+                ]
+            }
+        },
+        {
+            "label": "Coverage",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "cd ./build/debug",
+                    "&& make Coverage -j",
+                    "\"",
+                    "&& start brave \"${workspaceFolder}/build/coverage/index.html"
+                ]
+            },
+            "linux": {
+                "command": [
+                    "cd ./build/debug",
+                    "&& make Coverage -j",
+                    "&& brave ${workspaceFolder}/build/coverage/index.html"
+                ]
+            },
+            "dependsOn": [
+                "Cmake"
+            ]
+        },
+        {
+            "label": "Documentation",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "cd ./build/debug",
+                    "&& make Documentation -j",
+                    "\"",
+                    "&& start brave \"${workspaceFolder}/build/docs/html/index.html\""
+                ]
+            },
+            "linux": {
+                "command": [
+                    "cd ./build/debug",
+                    "&& make Documentation -j",
+                    "&& brave ${workspaceFolder}/build/docs/html/index.html"
+                ]
+            },
+            "dependsOn": [
+                "Cmake"
+            ]
+        },
+        {
+            "label": "Execute",
+            "type": "shell",
+            "windows": {
+                "command": [
+                    "bash -c \"",
+                    "mkdir -p build/release",
+                    "&& cd ./build/release",
+                    "&& cmake -DCMAKE_BUILD_TYPE=Release ../..",
+                    "&& make ${config:ProjectName} -j",
+                    "&& ./${config:ProjectName}",
+                    "\""
+                ]
+            },
+            "linux": {
+                "command": [
+                    "mkdir -p build/release",
+                    "&& cd ./build/release",
+                    "&& cmake -DCMAKE_BUILD_TYPE=Release ../..",
+                    "&& make ${config:ProjectName} -j",
+                    "&& ./${config:ProjectName}"
+                ]
+            },
+            "problemMatcher": []
+        }
+    ]
+}
